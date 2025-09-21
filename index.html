@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flores Amarillas 💛</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      background: linear-gradient(to bottom, #fff7a5, #ffd700);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-top: 40px;
+      color: #b8860b;
+      text-shadow: 2px 2px 5px #fff;
+      animation: brillar 2s infinite alternate;
+    }
+
+    p {
+      font-size: 1.3em;
+      margin-top: 20px;
+      color: #333;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @keyframes brillar {
+      from { text-shadow: 0 0 5px #fff, 0 0 10px #ffd700; }
+      to { text-shadow: 0 0 15px #fff, 0 0 25px #ffae00; }
+    }
+
+    /* Pétalos cayendo */
+    .petalo {
+      position: absolute;
+      top: -50px;
+      width: 45px;
+      height: 45px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.9;
+      animation: caer linear infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes caer {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Contenedor del girasol */
+    .ramo {
+      margin: 40px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+      height: 350px;
+    }
+    
+    /* Girasol mejorado */
+    .girasol {
+      width: 280px;
+      height: 280px;
+      position: relative;
+      animation: flotar 4s ease-in-out infinite;
+    }
+    
+    .centro {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      width: 90px;
+      height: 90px;
+      background: #5C3317;
+      border-radius: 50%;
+      z-index: 2;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .centro::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70px;
+      height: 70px;
+      background: radial-gradient(circle, #6B3F23 20%, #5C3317 70%);
+      border-radius: 50%;
+    }
+    
+    .petalo-girasol {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 45px;
+      height: 120px;
+      background: linear-gradient(to bottom, #FFD700, #FFA500);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      transform-origin: center 90px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .tallo {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 150px;
+      background: linear-gradient(to bottom, #228B22, #006400);
+      border-radius: 10px 10px 0 0;
+      z-index: -1;
+    }
+    
+    .hoja {
+      position: absolute;
+      width: 50px;
+      height: 40px;
+      background: #228B22;
+      border-radius: 50% 0 50% 50%;
+      transform: rotate(-20deg);
+      bottom: 80px;
+      left: 50%;
+      margin-left: -10px;
+    }
+    
+    .hoja.derecha {
+      left: 50%;
+      margin-left: 0;
+      transform: rotate(20deg) scaleX(-1);
+    }
+    
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .boton {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: #ffae00;
+      color: white;
+      border-radius: 25px;
+      font-size: 1.1em;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+      transition: 0.3s;
+      cursor: pointer;
+      border: none;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .boton:hover {
+      background: #e69500;
+      transform: scale(1.1);
+    }
+    
+    .mensaje-musica {
+      margin-top: 15px;
+      font-size: 1em;
+      color: #b8860b;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .sol {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #ffdd00 30%, transparent 70%);
+      border-radius: 50%;
+      animation: girar 20s linear infinite;
+      box-shadow: 0 0 30px #ffdd00;
+      z-index: 2;
+    }
+    
+    @keyframes girar {
+      from { transform: rotate(0); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      p { font-size: 1.1em; }
+      .sol {
+        width: 60px;
+        height: 60px;
+        top: 20px;
+        right: 20px;
+      }
+      .girasol {
+        width: 220px;
+        height: 220px;
+      }
+      .centro {
+        width: 70px;
+        height: 70px;
+      }
+      .centro::before {
+        width: 50px;
+        height: 50px;
+      }
+      .petalo-girasol {
+        height: 100px;
+        transform-origin: center 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sol"></div>
+  
+  <div class="container">
+    <h1>💛 Flores Amarillas para Ti 💛</h1>
+    <p>Porque cada día contigo merece un detalle especial 🌼✨</p>
+
+    <!-- 🌻 Girasol centrado y mejorado -->
+    <div class="ramo">
+      <div class="girasol">
+        <div class="centro"></div>
+        <div class="tallo"></div>
+        <div class="hoja"></div>
+        <div class="hoja derecha"></div>
+        <!-- Los pétalos se generan con JavaScript -->
+      </div>
+    </div>
+    
+    <!-- Botón para reproducir música -->
+    <button class="boton" onclick="playMusic()">🎶 Dale Play a tu Sorpresa</button>
+    
+    <p class="mensaje-musica" id="mensajeMusica">La música hará tu experiencia más especial</p>
+
+    <!-- Audio con fuente local -->
+    <audio id="musica" loop>
+      <source src="nuestra_cancion.mp3" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+  </div>
+
+  <script>
+    // Crear pétalos del girasol
+    function crearPetalosGirasol() {
+      const girasol = document.querySelector('.girasol');
+      const numPetalos = 20;
+      
+      for (let i = 0; i < numPetalos; i++) {
+        const petalo = document.createElement('div');
+        petalo.className = 'petalo-girasol';
+        petalo.style.transform = `translate(-50%, -50%) rotate(${i * (360 / numPetalos)}deg)`;
+        girasol.appendChild(petalo);
+      }
+    }
+    
+    // Pétalos cayendo como SVGs embebidos (base64)
+    const petalos = [
+      "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmYwMDAwIiBkPSJNMjU2IDQ4YzExNSAwIDIwOSA5NCAyMDkgMjEwIDAgMTE1LTk0IDIwOS0yMDkgMjA5UzQ3IDM3MyA0NyAyNTggMTQxIDQ4IDI1NiA0OHoiLz48L3N2Zz4=",   // rojo
+      "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmY2Njk5IiBkPSJNMjU2IDQ4YzExNSAwIDIwOSA5NCAyMDkgMjEwIDAgMTE1LTk0IDIwOS0yMDkgMjA5UzQ3IDM3MyA0NyAyNTggMTQxIDQ4IDI1NiA0OHoiLz48L3N2Zz4=", // rosado
+      "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmZmZmZmIiBkPSJNMjU2IDQ4YzExNSAwIDIwOSA5NCAyMDkgMjEwIDAgMTE1LTk0IDIwOS0yMDkgMjA5UzQ3IDM3MyA0NyAyNTggMTQxIDQ4IDI1NiA0OHoiLz48L3N2Zz4=", // blanco
+      "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmZkZDAwIiBkPSJNMjU2IDQ4YzExNSAwIDIwOSA5NCAyMDkgMjEwIDAgMTE1LTk0IDIwOS0yMDkgMjA5UzQ3IDM3MyA0NyAyNTggMTQxIDQ4IDI�NiA0OHoiLz48L3N2Zz4="  // amarillo
+    ];
+
+    // Crear pétalos cayendo
+    function crearPetaloCayendo() {
+      const petalo = document.createElement("div");
+      petalo.classList.add("petalo");
+      petalo.style.left = Math.random() * window.innerWidth + "px";
+      petalo.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+      // Selección aleatoria
+      const petaloRandom = petalos[Math.floor(Math.random() * petalos.length)];
+      petalo.style.backgroundImage = `url('${petaloRandom}')`;
+
+      document.body.appendChild(petalo);
+      
+      // Eliminar el pétalo después de que termine la animación
+      setTimeout(() => {
+        if (petalo.parentNode) {
+          petalo.parentNode.removeChild(petalo);
+        }
+      }, 10000);
+    }
+
+    // Música
+    function playMusic() {
+      const musica = document.getElementById("musica");
+      const mensaje = document.getElementById("mensajeMusica");
+      
+      musica.play().then(() => {
+        mensaje.textContent = "✨ Disfruta de esta melodía especial 💛";
+      }).catch(error => {
+        mensaje.textContent = "💛 No se pudo cargar la música. Asegúrate de que el archivo 'nuestra_cancion.mp3' esté en la misma carpeta que este archivo HTML.";
+      });
+    }
+    
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', function() {
+      // Crear pétalos del girasol
+      crearPetalosGirasol();
+      
+      // Iniciar la lluvia de pétalos
+      setInterval(crearPetaloCayendo, 300);
+      
+      // Crear algunos pétalos iniciales
+      for (let i = 0; i < 15; i++) {
+        setTimeout(crearPetaloCayendo, 100 * i);
+      }
+    });
+  </script>
+</body>
+</html>
